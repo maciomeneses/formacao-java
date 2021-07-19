@@ -1,7 +1,6 @@
-
 public class Televisao {
-	private int volume;
-	private int canal;
+	private int volume = 0;
+	private int canal = 0;
 	
 	public int getVolume() {
 		return volume;
@@ -15,4 +14,5 @@ public class Televisao {
 	public void setCanal(int canal) {
 		this.canal = canal;
 	}
+
 }
