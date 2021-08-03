@@ -4,6 +4,7 @@ public class Programa {
 		ControleRemoto controle = new ControleRemoto();
 		
 		controle.aumentaVolume(televisao);
+		controle.aumentaVolume(televisao);
 		controle.diminuirVolume(televisao);
 		System.out.println("Volume da tv: " + controle.getVolume());
 		controle.trocarCanal(televisao, 10);

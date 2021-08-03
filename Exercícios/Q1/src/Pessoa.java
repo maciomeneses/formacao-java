@@ -1,13 +1,18 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Pessoa {
 	private String nome;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private String altura;
+	private Integer idade;
 	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	
@@ -15,28 +20,50 @@ public class Pessoa {
 		this.altura = altura;
 	}
 	
-	public String getNome() {
-		return this.nome;
+	public void setIdade(Integer idade)
+	{
+		this.idade = idade;
 	}
 	
-	public String getDataNascimento() {
-		return this.dataNascimento;
+	public String getNome() {
+		return nome;
+	}
+	
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 	
 	public String getAltura() {
-		return this.altura;
+		return altura;
+	}
+	
+	public Integer getIdade() {
+		return idade;
+	}
+	
+	public void calculaIdade(){
+		SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+		data.format(this.dataNascimento.getTime());
+		
+		Calendar dataDeHoje = Calendar.getInstance();
+		Calendar dataNasc = Calendar.getInstance();
+		dataNasc.setTime(dataNascimento);
+		
+		if(dataDeHoje.get(Calendar.MONTH) > dataNasc.get(Calendar.MONTH))
+			idade = dataDeHoje.get(Calendar.YEAR) - dataNasc.get(Calendar.YEAR);
+		else if(dataDeHoje.get(Calendar.MONTH) == dataNasc.get(Calendar.MONTH)) {
+			if(dataDeHoje.get(Calendar.DATE) == dataNasc.get(Calendar.DATE))
+					idade = dataDeHoje.get(Calendar.YEAR) - dataNasc.get(Calendar.YEAR);
+		}
+		else
+			idade = dataDeHoje.get(Calendar.YEAR) - dataNasc.get(Calendar.YEAR) - 1;
 	}
 	
 	public void printaDados() {
-		System.out.println("Nome: " + this.nome);
-		System.out.println("Data de nascimento: " + this.dataNascimento);
-		System.out.println("Altura: " + this.altura);
-	}
-	
-	public void getIdade() {
-		//String diaStr, mesStr, anoStr;
-		//int diaInt, mesInt, anoInt;
-		
-		
+		System.out.println("Nome: " + nome);
+		System.out.println("Data de Nascimento: " + getDataNascimento());
+		System.out.println("Altura: " + altura);
+		calculaIdade();
+		System.out.println("Idade: " + idade);
 	}
 }

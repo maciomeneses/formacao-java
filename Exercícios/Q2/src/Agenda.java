@@ -66,10 +66,11 @@ public class Agenda {
 	void removePessoa(String nome) {
 		int index = buscaPessoa(nome);
 		
-		for(int i = index; i<9; i++) {
+		for(int i = index; i<numEntrada-1; i++) {
 			this.nome[i] = this.nome[i + 1];
 		}
-		this.nome[9] = "";
+		this.nome[numEntrada] = "";
+		numEntrada--;
 	}
 	
 	

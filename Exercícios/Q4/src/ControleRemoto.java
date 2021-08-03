@@ -5,7 +5,7 @@ public class ControleRemoto extends Televisao{
 	}
 	public void diminuirVolume(Televisao televisao){
 		if(televisao.getVolume()>0)
-			televisao.setVolume(getVolume()-1);
+			televisao.setVolume((televisao.getVolume()-1));
 	}
 	public void trocarCanal(Televisao televisao, int canal) {
 		televisao.setCanal(canal);
